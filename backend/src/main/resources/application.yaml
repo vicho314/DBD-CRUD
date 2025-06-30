@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: "backend"
+
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/demo_db"
+    username: "demo_user"
+    password: "demo_password"
+    driver-class-name: "org.postgresql.Driver"
+
+server:
+  port: 8080
