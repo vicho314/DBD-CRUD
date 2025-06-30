@@ -3,6 +3,38 @@
 Backend de una tienda online que vende juegos de mesa,
 hecho en Spring Boot y PostgreSQL.
 
+## Requisitos
+
+Se debe tener instalado JDK 17 (Java) y PostgreSQL. Este proyecto usa Maven 
+para configurar las builds y el proceso de compilación,por lo que se incluye un 
+wrapper `mvnw` que genera una instalación local del mismo, si es necesario.
+
+Para compilar el proyecto desde una interfaz gráfica (opcional), es necesario
+usar editores de texto especializados (IDEs, como IntelliJ o VSCode) que
+tengan soporte integrado de Maven.
+
+Para poder conectar el Backend a la base de datos por defecto,
+se puede crearla con las siguientes instrucciones de PSQL:
+
+```
+CREATE DATABASE demo_db;
+CREATE USER demo_user WITH ENCRYPTED PASSWORD 'demo_password';
+GRANT ALL PRIVILEGES ON DATABASE demo_db TO demo_user;
+```
+
+Se puede configurar la dirección y otros parámetros de la base de 
+datos en ```backend/src/main/resources/application.yaml```
+antes de compilar.
+
+## Instrucciones de uso
+
+Para compilar el archivo .jar ejecutable, basta con ir a la carpeta `backend`
+y ejecutar la orden de terminal de Maven  `./mvnw package` en Linux, 
+o `mvnw.cmd package` en Windows. Se generará un nuevo archivo .jar en `target/`.
+
+Luego, para ejecutarlo, usar `java -jar <CaminoEjecutable>.jar` mientras
+esté activa la BD anterior en PostgreSQL.
+
 ## Requerimientos 
 
 - [ ] a. Login y registro de los usuarios.
