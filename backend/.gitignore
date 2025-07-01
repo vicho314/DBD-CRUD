@@ -64,3 +64,8 @@ build/
 ### misc ###
 *.bak
 *.bk
+
+### Spring ###
+src/main/resources/application.yaml
+src/main/resources/application.properties
+
