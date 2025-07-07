@@ -26,19 +26,19 @@ VALUES
 ('credito','BCI','Ana Ramírez',576378,'2025-02-28',576378,'11.654.789-4'),
 ('credito','Banco_Falabella','Lucas Díaz',9836472,'2027-04-03',121378,'12.654.821-7');
 
-INSERT INTO USUARIO (numero_vivienda, correo_usuario, contraseña, nombre_real, nombre_usuario) VALUES
+INSERT INTO USUARIO (numeracion, correo_usuario, contraseña, nombre_real, nombre_usuario) VALUES
 (1, 'juan.perez@example.com', 'clave123', 'Juan Pérez', 'juanp'),
 (2, 'maria.gomez@example.com', 'pass456', 'María Gómez', 'mariag'),
 (3, 'carlos.lopez@example.com', 'admin789', 'Carlos López', 'carlosl'),
 (4, 'ana.ramirez@example.com', 'ana321', 'Ana Ramírez', 'anar'),
 (5, 'lucas.diaz@example.com', 'lucas999', 'Lucas Díaz', 'lucasd');
 
-INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, calle_tienda, numero_tienda, ciudad_tienda) VALUES
- (2,'Cool Carding','998877665','Juan Perez',25,'Santiago'),
- (3,'First Impact Co.','992247665','Brasil',10,'San Bernardo'),
- (4,'Juegos Buenos','991732669','Juan Perez',26,'Santiago'),
- (5,'Gato Joker','918124657','Nerea',13,'San Miguel'),
- (1,'Cartas Locas','926654161','Carlos Ramírez',443,'Santiago');
+INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, numeracion) VALUES
+ (2,'Cool Carding','998877665',3),
+ (3,'First Impact Co.','992247665',4),
+ (4,'Juegos Buenos','991732669',1),
+ (5,'Gato Joker','918124657',5),
+ (1,'Cartas Locas','926654161',2);
 
 INSERT INTO ROL (id_rol, id_usuario, nombre_rol) VALUES
 (1, 1, 'cliente'),         
