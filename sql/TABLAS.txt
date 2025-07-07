@@ -55,7 +55,7 @@ CREATE table if not EXISTS TIENDA
 	nombre_tienda TEXT, 
 	telefono_tienda CHAR(9), 
 	numeracion INT CHECK (numeracion > 0), 
-	FOREIGN KEY(id_ranking) REFERENCES RANKING(id_ranking)
+	FOREIGN KEY(id_ranking) REFERENCES RANKING(id_ranking),
 	FOREIGN KEY(numeracion) REFERENCES UBICACION(numeracion)  
 );
 
