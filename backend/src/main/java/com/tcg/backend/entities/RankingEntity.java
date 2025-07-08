@@ -17,19 +17,19 @@ public class RankingEntity {
 		this.fecha_ranking_v = null; //FIXME: NOT NULL!
 	}
 
-	public getId_ranking(){
+	public int getId_ranking(){
 		return id_ranking;
 	}
 
-	public setId_ranking(int id){
+	public void setId_ranking(int id){
 		this.id_ranking = id;
 	}
 
-	public getFecha_ranking_v(){
+	public Date getFecha_ranking_v(){
 		return fecha_ranking_v;
 	}
 
-	public setFecha_ranking_v(Date fecha){
+	public void setFecha_ranking_v(Date fecha){
 		this.fecha_ranking_v = fecha; //FIXME: NOT NULL!
 	}
 

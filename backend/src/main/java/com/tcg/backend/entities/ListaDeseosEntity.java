@@ -2,15 +2,15 @@ package com.tcg.backend.entities;
 
 //@Entity
 //@Table(name=lista_de_deseos")
-public class ListaDeDeseosEntity {
+public class ListaDeseosEntity {
     private int id_lista;
     private String nombre_lista;
 
-    public ListaDeDeseosEntity() {
+    public ListaDeseosEntity() {
         this.id_lista = -1;
         this.nombre_lista = null;
     }
-    public ListaDeDeseosEntity(int id_lista, String nombre_lista) {
+    public ListaDeseosEntity(int id_lista, String nombre_lista) {
         this.id_lista = id_lista;
         this.nombre_lista = nombre_lista;
     }

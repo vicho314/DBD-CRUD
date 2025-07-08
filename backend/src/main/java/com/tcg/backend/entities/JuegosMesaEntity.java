@@ -9,7 +9,7 @@ public class JuegosMesaEntity {
 	private String nombre_juego;	// NOT NULL
 	private String tipo;		// varchar(10) NOT NULL
 	
-	public class JuegosMesaEntity (int id_juego, int id_producto, Float precio, String nombre_juego, String tipo){
+	public JuegosMesaEntity (int id_juego, int id_producto, Float precio, String nombre_juego, String tipo) {
 		this.id_juego = id_juego;	
 		this.id_producto = id_producto;
 	        this.precio = precio;
@@ -17,7 +17,7 @@ public class JuegosMesaEntity {
 		this.tipo = tipo;
 	}
 
-	public class JuegosMesaEntity (){
+	public JuegosMesaEntity (){
 		this.id_juego = -1;	
 		this.id_producto = -1;
 	        this.precio = null;
