@@ -10,20 +10,15 @@ public class TiendaEntity {
   private int id_ranking;
   private String nombre;
   private String telefono;
-  private String calle;
-  private int numero;
-  private String ciudad;
+  private int numeracion;
 
   //constructor de clase (ej: tienda = new TiendaEntity(...) )
-  public TiendaEntity(int id, int id_ranking, String nombre, String telefono, String calle,
-      int numero,String ciudad) {
+  public TiendaEntity(int id, int id_ranking, String nombre, String telefono, int numeracion) {
     this.id = id;
     this.id_ranking = id_ranking;
     this.nombre = nombre;
     this.telefono = telefono;
-    this.calle = calle;
-    this.numero = numero;
-    this.ciudad = ciudad;
+    this.numeracion = numeracion;
   }
 
   public TiendaEntity() {
@@ -31,9 +26,7 @@ public class TiendaEntity {
     this.id_ranking = -1;
     this.nombre = null;
     this.telefono = null;
-    this.calle = null;
-    this.numero = -1;
-    this.ciudad = null;
+    this.numeracion = -1;
   }
 
   //getters y setters (ya que los atributos son privados)
@@ -69,29 +62,14 @@ public class TiendaEntity {
     this.telefono = telefono;
   }
 
-  public String getCalle() {
-    return calle;
+  public String getNumeracion() {
+    return numeracion;
   }
 
-  public void setCalle(String calle) {
-    this.calle = calle;
+  public void setNumeracion(int numeracion) {
+    this.numeracion = numeracion;
   }
 
-  public int getNumero() {
-    return numero;
-  }
-
-  public void setNumero(int numero) {
-    this.numero = numero;
-  }
-
-  public String getCiudad() {
-    return ciudad;
-  }
-
-  public void setCiudad(String ciudad) {
-    this.ciudad = ciudad;
-  }
 
   //metodos
   //public int algo(){}
