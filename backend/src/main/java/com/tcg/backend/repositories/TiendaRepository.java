@@ -17,50 +17,83 @@ public class TiendaRepository {
 	@Autowired
 	private Sql2o sql2o;
 
-	public void setDefaultMapping(){
-		//O los atributos se llaman igual que en sql, o los mapeamos	
-		Map<String, String> colMaps = new HashMap<String,String>();
-		colMaps.put("id_tienda", "id");
-		colMaps.put("nombre_tienda", "nombre");
-		colMaps.put("telefono_tienda", "telefono");
-		colMaps.put("calle_tienda", "calle");
-		colMaps.put("numero_tienda", "numero");
-		colMaps.put("ciudad_tienda", "ciudad");
-		sql2o.setDefaultColumnMappings(colMaps);
-	}
-
 	public List<TiendaEntity> findAll(){
-		setDefaultMapping();
-		String sql = 
+		String sql =
 			"SELECT * " +
 			"FROM TIENDA";
-		
+
 		try(Connection con = sql2o.open()) {
         		return con.createQuery(sql)
 				.executeAndFetch(TiendaEntity.class);
     		}
 	}
 
+	public TiendaEntity findById(int id){
+		String sql =
+				"SELECT * " +
+						"FROM TIENDA WHERE id = :id";
+
+		try(Connection con = sql2o.open()) {
+			return con.createQuery(sql)
+					.addParameter("id",id)
+					.executeAndFetchFirst(TiendaEntity.class); //First retorna el objeto, no List
+		}
+	}
+
 	//FIXME: revisar CHECK en def. de tabla
 	public TiendaEntity save(TiendaEntity tienda){
-		setDefaultMapping();
-		String insertSql = 
-			"INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, calle_tienda, numero_tienda, ciudad_tienda)" +
-			"VALUES (:id_ranking, :nombre_tienda, :telefono_tienda, :calle_tienda, :numero_tienda, :ciudad_tienda)";
+		String insertSql =
+			"INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, numeracion)" +
+			"VALUES (:id_ranking, :nombre_tienda, :telefono_tienda, :numeracion)";
 
 		try (Connection con = sql2o.open()) {
 		    int id = con.createQuery(insertSql,true)
 			.addParameter("id_ranking", tienda.getId_ranking())
-			.addParameter("nombre_tienda", tienda.getNombre())
-			.addParameter("telefono_tienda",tienda.getTelefono()) 
-			.addParameter("calle_tienda",tienda.getCalle())
-			.addParameter("numero_tienda",tienda.getNumero()) 
-			.addParameter("ciudad_tienda",tienda.getCiudad())
+			.addParameter("nombre_tienda", tienda.getNombre_tienda())
+			.addParameter("telefono_tienda",tienda.getTelefono_tienda())
+			.addParameter("numeracion",tienda.getNumeracion())
 			.executeUpdate()
 			.getKey(Integer.class); //importante: setear id nueva del objeto!
-			
+
 		    tienda.setId(id);
-	    	    return tienda;	    
+	    	    return tienda;
+		}
+	}
+
+	public TiendaEntity update(TiendaEntity tienda){
+		String insertSql =
+				"UPDATE TIENDA + " +
+						"SET id_ranking = :id_ranking, nombre_tienda = :nombre_tienda, telefono_tienda = :telefono_tienda, numeracion = :numeracion)" +
+						"WHERE id = :id";
+
+		try (Connection con = sql2o.open()) {
+			con.createQuery(insertSql,true)
+					.addParameter("id", tienda.getId())
+					.addParameter("id_ranking", tienda.getId_ranking())
+					.addParameter("nombre_tienda", tienda.getNombre_tienda())
+					.addParameter("telefono_tienda",tienda.getTelefono_tienda())
+					.addParameter("numeracion",tienda.getNumeracion())
+					.executeUpdate();
+
+			TiendaEntity tiendaNew = con.createQuery("SELECT * FROM TIENDA WHERE id = :id ")
+					.addParameter("id",tienda.getId())
+					.executeAndFetchFirst(TiendaEntity.class);
+
+			return tiendaNew;
+		}
+	}
+
+	public boolean delete(TiendaEntity tienda){
+		String insertSql =
+				"DELETE TIENDA + " +
+						"WHERE id = :id";
+
+		try (Connection con = sql2o.open()) {
+			con.createQuery(insertSql,true)
+					.addParameter("id", tienda.getId())
+					.executeUpdate();
+
+			return true;
 		}
 	}
 }

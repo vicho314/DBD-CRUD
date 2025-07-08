@@ -8,24 +8,24 @@ public class TiendaEntity {
   //atributos de clase (ej: a.nombre, si nombre fuera "public")
   private int id;
   private int id_ranking;
-  private String nombre;
-  private String telefono;
+  private String nombre_tienda;
+  private String telefono_tienda;
   private int numeracion;
 
   //constructor de clase (ej: tienda = new TiendaEntity(...) )
-  public TiendaEntity(int id, int id_ranking, String nombre, String telefono, int numeracion) {
+  public TiendaEntity(int id, int id_ranking, String nombre_tienda, String telefono_tienda, int numeracion) {
     this.id = id;
     this.id_ranking = id_ranking;
-    this.nombre = nombre;
-    this.telefono = telefono;
+    this.nombre_tienda = nombre_tienda;
+    this.telefono_tienda = telefono_tienda;
     this.numeracion = numeracion;
   }
 
   public TiendaEntity() {
     this.id = -1;
     this.id_ranking = -1;
-    this.nombre = null;
-    this.telefono = null;
+    this.nombre_tienda = null;
+    this.telefono_tienda = null;
     this.numeracion = -1;
   }
 
@@ -46,23 +46,23 @@ public class TiendaEntity {
     this.id_ranking = id_ranking;
   }
 
-  public String getNombre() {
-    return nombre;
+  public String getNombre_tienda() {
+    return nombre_tienda;
   }
 
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
+  public void setNombre_tienda(String nombre_tienda) {
+    this.nombre_tienda = nombre_tienda;
   }
 
-  public String getTelefono() {
-    return telefono;
+  public String getTelefono_tienda() {
+    return telefono_tienda;
   }
 
-  public void setTelefono(String telefono) {
-    this.telefono = telefono;
+  public void setTelefono_tienda(String telefono_tienda) {
+    this.telefono_tienda = telefono_tienda;
   }
 
-  public String getNumeracion() {
+  public int getNumeracion() {
     return numeracion;
   }
 
