@@ -10,15 +10,15 @@ public class TiendaEntity {
   private int id_ranking;
   private String nombre_tienda;
   private String telefono_tienda;
-  private int numeracion;
+  private int id_ubicacion;
 
   //constructor de clase (ej: tienda = new TiendaEntity(...) )
-  public TiendaEntity(int id, int id_ranking, String nombre_tienda, String telefono_tienda, int numeracion) {
+  public TiendaEntity(int id, int id_ranking, String nombre_tienda, String telefono_tienda, int id_ubicacion) {
     this.id = id;
     this.id_ranking = id_ranking;
     this.nombre_tienda = nombre_tienda;
     this.telefono_tienda = telefono_tienda;
-    this.numeracion = numeracion;
+    this.id_ubicacion = id_ubicacion;
   }
 
   public TiendaEntity() {
@@ -26,7 +26,7 @@ public class TiendaEntity {
     this.id_ranking = -1;
     this.nombre_tienda = null;
     this.telefono_tienda = null;
-    this.numeracion = -1;
+    this.id_ubicacion = -1;
   }
 
   //getters y setters (ya que los atributos son privados)
@@ -62,12 +62,12 @@ public class TiendaEntity {
     this.telefono_tienda = telefono_tienda;
   }
 
-  public int getNumeracion() {
-    return numeracion;
+  public int getId_ubicacion() {
+    return id_ubicacion;
   }
 
-  public void setNumeracion(int numeracion) {
-    this.numeracion = numeracion;
+  public void setId_ubicacion(int id_ubicacion) {
+    this.id_ubicacion = id_ubicacion;
   }
 
 
