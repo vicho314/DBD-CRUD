@@ -1,17 +1,17 @@
 package com.tcg.backend.entities;
 
-public class CarritoEntity {
+public class BoletaEntity{
 
 	private int id_boleta;
 	private int id_carro;
-	private Boolean id_metodo_de_pago;
+	private int id_metodo_de_pago;
 	private int fecha_boleta;
 
-	public class BoletaEntity(int id_boleta, int id_carro, Boolean id_metodo_de_pago, int fecha_boleta) {
+	public BoletaEntity(int id_boleta, int id_carro, int id_metodo_de_pago, int fecha_boleta) {
 		this.id_boleta =id_boleta;
-		this id_carro =id_carro;
-		this id_metodo_de_pago =id_metodo_de_pago;
-		this fecha_boleta =fecha_boleta;
+		this.id_carro =id_carro;
+		this.id_metodo_de_pago =id_metodo_de_pago;
+		this.fecha_boleta =fecha_boleta;
 
 	}
 
@@ -36,15 +36,7 @@ public class CarritoEntity {
 	}
 
 	public void setId_carro(int id_carro) {
-		this id_carro = id_carro;
-	}
-
-	public int getId_metodo_de_pago() {
-		return id_metodo_de_pago;
-	}
-
-	public void setId_metodo_de_pago(Boolean id_metodo_de_pago) {
-		this id_metodo_de_pago = id_metodo_de_pago;
+		this.id_carro = id_carro;
 	}
 
 	public int getFecha_boleta() {
@@ -52,11 +44,17 @@ public class CarritoEntity {
 	}
 
 	public void setFecha_boleta(int fecha_boleta) {
-		this fecha_boleta = fecha_boleta;
+		this.fecha_boleta = fecha_boleta;
 	}
 
+	public int getId_metodo_de_pago() {
+		return id_metodo_de_pago;
+	}
 
-
+	public void setId_metodo_de_pago(int id_metodo_de_pago) {
+		this.id_metodo_de_pago = id_metodo_de_pago;
+	}
+}
 
 
 
