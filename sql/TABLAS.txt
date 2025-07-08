@@ -1,7 +1,8 @@
 CREATE TABLE IF NOT EXISTS UBICACION
 
 (
-	numeracion SERIAL PRIMARY KEY,
+	id_ubicacion SERIAL PRIMARY KEY,
+	numeracion INT NOT NULL,
 	ciudad TEXT NOT NULL,
 	calle TEXT NOT NULL
 );
@@ -37,14 +38,14 @@ CREATE TABLE IF NOT EXISTS USUARIO
 (
 	id_usuario SERIAL PRIMARY KEY,
 	id_lista INT,
-	numeracion INT NOT NULL,
+	id_ubicacion INT NOT NULL,
 	id_metodo_pago INT,
 	correo_usuario TEXT UNIQUE,
 	contraseña VARCHAR(64) NOT NULL,
 	nombre_real TEXT NOT NULL,
 	nombre_usuario VARCHAR(64) NOT NULL,
 	FOREIGN KEY(id_lista) REFERENCES LISTA_DE_DESEOS(id_lista),
-	FOREIGN KEY(numeracion) REFERENCES UBICACION(numeracion),
+	FOREIGN KEY(id_ubicacion) REFERENCES UBICACION(id_ubicacion),
 	FOREIGN KEY(id_metodo_pago) REFERENCES METODOS_DE_PAGO(id_metodo_de_pago)
 );
 
@@ -54,9 +55,9 @@ CREATE table if not EXISTS TIENDA
 	id_ranking INT, 
 	nombre_tienda TEXT, 
 	telefono_tienda CHAR(9), 
-	numeracion INT CHECK (numeracion > 0), 
+	id_ubicacion INT CHECK (numeracion > 0),
 	FOREIGN KEY(id_ranking) REFERENCES RANKING(id_ranking),
-	FOREIGN KEY(numeracion) REFERENCES UBICACION(numeracion)  
+	FOREIGN KEY(id_ubicacion) REFERENCES UBICACION(id_ubicacion)
 );
 
 CREATE TABLE IF NOT EXISTS ROL

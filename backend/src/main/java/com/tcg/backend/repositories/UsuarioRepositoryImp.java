@@ -21,12 +21,12 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
 
     @Override
     public UsuarioEntity create(UsuarioEntity usuario) {
-        String sql = "INSERT INTO USUARIO(id_lista,numeracion,id_metodo_pago,correo_usuario,contraseña, nombre_real,nombre_usuario)"+
-                "VALUES(:id_lista, :numeracion, :id_metodo_pago, :correo_usuario, :contraseña, :nombre_real, :nombre_usuario)";
+        String sql = "INSERT INTO USUARIO(id_lista,id_ubicacion,id_metodo_pago,correo_usuario,contraseña, nombre_real,nombre_usuario)"+
+                "VALUES(:id_lista, :id_ubicacion, :id_metodo_pago, :correo_usuario, :contraseña, :nombre_real, :nombre_usuario)";
         try (Connection con = sql2o.open()) {
             int id_usuario = con.createQuery(sql, true)
                     .addParameter("id_lista",usuario.getNombre_usuario())
-                    .addParameter("numeracion",usuario.getNumeracion())
+                    .addParameter("id_ubicacion",usuario.getId_ubicacion())
                     .addParameter("id_metodo_pago",usuario.getId_metodo_pago())
                     .addParameter("correo_usuario", usuario.getCorreo_usuario())
                     .addParameter("Contraseña", usuario.getContraseña())
@@ -74,13 +74,13 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
    // UPDATE
     @Override
     public UsuarioEntity update(UsuarioEntity usuario, int id_usuario) {
-        String sql = "UPDATE USUARIO SET id_lista = :id_lista, numeracion = :numeracion, id_metodo_pago = :id_metodo_pago, " +
+        String sql = "UPDATE USUARIO SET id_lista = :id_lista, id_ubicacion = :id_ubicacion, id_metodo_pago = :id_metodo_pago, " +
                 "correo_usuario = :correo_usuario, \"contraseña\" = :contraseña, nombre_real = :nombre_real, nombre_usuario = :nombre_usuario WHERE id_usuario = :id_usuario ";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql, true)
                     .addParameter("id_usuario", id_usuario)
                     .addParameter("id_lista", usuario.getId_lista())
-                    .addParameter("numeracion", usuario.getNumeracion())
+                    .addParameter("id_ubicacion", usuario.getId_ubicacion())
                     .addParameter("id_metodo_pago", usuario.getId_metodo_pago())
                     .addParameter("correo_usuario", usuario.getCorreo_usuario())
                     .addParameter("contraseña", usuario.getContraseña())

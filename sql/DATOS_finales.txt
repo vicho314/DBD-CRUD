@@ -1,9 +1,9 @@
-INSERT INTO UBICACION (ciudad, calle) VALUES
-('Santiago', 'Av. Providencia 123'),
-('Valparaíso', 'Calle Condell 456'),
-('Concepción', 'Av. Los Carrera 789'),
-('La Serena', 'Pasaje Elqui 321'),
-('Valencia', 'Paraparal 654');
+INSERT INTO UBICACION (numeracion,ciudad, calle) VALUES
+(123,'Santiago', 'Av. Providencia'),
+(456,'Valparaíso', 'Calle Condell'),
+(789,'Concepción', 'Av. Los Carrera'),
+(321, 'La Serena', 'Pasaje Elqui'),
+(654, 'Valencia', 'Paraparal');
 
 INSERT INTO Lista_De_Deseos (nombre_lista) VALUES('Listadedeseos1'),
 ('Listadedeseos2'),
@@ -26,21 +26,21 @@ VALUES
 ('credito','BCI','Ana Ramírez',576378,'2025-02-28',576378,'11.654.789-4'),
 ('credito','Banco_Falabella','Lucas Díaz',9836472,'2027-04-03',121378,'12.654.821-7');
 
-INSERT INTO USUARIO (numeracion, correo_usuario, contraseña, nombre_real, nombre_usuario) VALUES
+INSERT INTO USUARIO (id_ubicacion, correo_usuario, contraseña, nombre_real, nombre_usuario) VALUES // FALTA ID LISTA
 (1, 'juan.perez@example.com', 'clave123', 'Juan Pérez', 'juanp'),
 (2, 'maria.gomez@example.com', 'pass456', 'María Gómez', 'mariag'),
 (3, 'carlos.lopez@example.com', 'admin789', 'Carlos López', 'carlosl'),
 (4, 'ana.ramirez@example.com', 'ana321', 'Ana Ramírez', 'anar'),
 (5, 'lucas.diaz@example.com', 'lucas999', 'Lucas Díaz', 'lucasd');
 
-INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, numeracion) VALUES
+INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, id_ubicacion) VALUES
  (2,'Cool Carding','998877665',3),
  (3,'First Impact Co.','992247665',4),
  (4,'Juegos Buenos','991732669',1),
  (5,'Gato Joker','918124657',5),
  (1,'Cartas Locas','926654161',2);
 
-INSERT INTO ROL (id_rol, id_usuario, nombre_rol) VALUES
+INSERT INTO ROL (id_rol, id_usuario, nombre_rol) VALUES // NO DEBERIA ESTAR ID ROL O SI?
 (1, 1, 'cliente'),         
 (1, 2, 'cliente'),         
 (2, 3, 'administrador'),   

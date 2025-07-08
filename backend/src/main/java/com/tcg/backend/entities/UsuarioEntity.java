@@ -4,19 +4,19 @@ public class UsuarioEntity {
 
     private int id_usuario;
     private int id_lista;
-    private int numeracion;
+    private int id_ubicacion;
     private int id_metodo_pago;
     private String correo_usuario;
     private String contraseña;
     private String nombre_real;
     private String nombre_usuario;
 
-    public UsuarioEntity(int id_usuario, int id_lista, int numeracion, int id_metodo_pago,
+    public UsuarioEntity(int id_usuario, int id_lista, int id_ubicacion, int id_metodo_pago,
                          String correo_usuario, String contraseña, String nombre_real, String nombre_usuario) {
 
         this.id_usuario = id_usuario;
         this.id_lista = id_lista;
-        this.numeracion = numeracion;
+        this.id_ubicacion = id_ubicacion;
         this.id_metodo_pago = id_metodo_pago;
         this.correo_usuario = correo_usuario;
         this.contraseña = contraseña;
@@ -27,7 +27,7 @@ public class UsuarioEntity {
     public UsuarioEntity() {
         this.id_usuario = -1;
         this.id_lista = -1;
-        this.numeracion = -1;
+        this.id_ubicacion = -1;
         this.id_metodo_pago = -1;
         this.correo_usuario = null;
         this.contraseña = null;
@@ -51,12 +51,12 @@ public class UsuarioEntity {
         this.id_lista = id_lista;
     }
 
-    public int getNumeracion() {
-        return numeracion;
+    public int getId_ubicacion() {
+        return id_ubicacion;
     }
 
-    public void setNumeracion(int numeracion) {
-        this.numeracion = numeracion;
+    public void setId_ubicacion(int id_ubicacion) {
+        this.id_ubicacion = id_ubicacion;
     }
 
     public int getId_metodo_pago() {
