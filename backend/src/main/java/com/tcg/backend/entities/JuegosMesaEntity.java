@@ -12,7 +12,7 @@ public class JuegosMesaEntity {
 	public JuegosMesaEntity (int id_juego, int id_producto, Float precio, String nombre_juego, String tipo) {
 		this.id_juego = id_juego;	
 		this.id_producto = id_producto;
-	        this.precio = precio;
+		this.precio = precio;
 		this.nombre_juego = nombre_juego;
 		this.tipo = tipo;
 	}
@@ -20,7 +20,7 @@ public class JuegosMesaEntity {
 	public JuegosMesaEntity (){
 		this.id_juego = -1;	
 		this.id_producto = -1;
-	        this.precio = null;
+		this.precio = null;
 		this.nombre_juego = null;
 		this.tipo = null;
 	}

@@ -31,11 +31,11 @@ public class TiendaRepository {
 	public TiendaEntity findById(int id){
 		String sql =
 				"SELECT * " +
-						"FROM TIENDA WHERE id = :id";
+						"FROM TIENDA WHERE id_tienda = :id_tienda";
 
 		try(Connection con = sql2o.open()) {
 			return con.createQuery(sql)
-				.addParameter("id",id)
+				.addParameter("id_tienda",id)
 				.executeAndFetchFirst(TiendaEntity.class); //First retorna el objeto, no List
 		}
 	}
@@ -55,7 +55,7 @@ public class TiendaRepository {
 			.executeUpdate()
 			.getKey(Integer.class); //importante: setear id nueva del objeto!
 
-		    tienda.setId(id);
+		    tienda.setId_tienda(id);
 	    	    return tienda;
 		}
 	}
@@ -63,20 +63,20 @@ public class TiendaRepository {
 	public TiendaEntity update(TiendaEntity tienda){
 		String insertSql =
 				"UPDATE TIENDA + " +
-						"SET id_ubicacion = :id_ubicacion, id_ranking = :id_ranking, nombre_tienda = :nombre_tienda, telefono_tienda = :telefono_tienda)" +
-						"WHERE id = :id";
+						"SET id_ubicacion = :id_ubicacion, id_ranking = :id_ranking, nombre_tienda = :nombre_tienda, telefono_tienda = :telefono_tienda" +
+						"WHERE id_tienda = :id_tienda";
 
 		try (Connection con = sql2o.open()) {
 			con.createQuery(insertSql,true)
-					.addParameter("id", tienda.getId())
+					.addParameter("id_tienda", tienda.getId_tienda())
 					.addParameter("id_ubicacion",tienda.getId_ubicacion())
 					.addParameter("id_ranking", tienda.getId_ranking())
 					.addParameter("nombre_tienda", tienda.getNombre_tienda())
 					.addParameter("telefono_tienda",tienda.getTelefono_tienda())
 					.executeUpdate();
 
-			TiendaEntity tiendaNew = con.createQuery("SELECT * FROM TIENDA WHERE id = :id ")
-					.addParameter("id",tienda.getId())
+			TiendaEntity tiendaNew = con.createQuery("SELECT * FROM TIENDA WHERE id_tienda = :id_tienda ")
+					.addParameter("id_tienda",tienda.getId_tienda())
 					.executeAndFetchFirst(TiendaEntity.class);
 
 			return tiendaNew;
@@ -86,11 +86,11 @@ public class TiendaRepository {
 	public boolean delete(TiendaEntity tienda){
 		String insertSql =
 				"DELETE TIENDA + " +
-						"WHERE id = :id";
+						"WHERE id_tienda = :id_tienda";
 
 		try (Connection con = sql2o.open()) {
 			con.createQuery(insertSql,true)
-					.addParameter("id", tienda.getId())
+					.addParameter("id_tienda", tienda.getId_tienda())
 					.executeUpdate();
 
 			return true;
