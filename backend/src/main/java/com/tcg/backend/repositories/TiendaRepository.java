@@ -43,8 +43,8 @@ public class TiendaRepository {
 	//FIXME: revisar CHECK en def. de tabla
 	public TiendaEntity save(TiendaEntity tienda){
 		String insertSql =
-			"INSERT INTO TIENDA (numeracion, id_ranking, nombre_tienda, telefono_tienda, id_ubicacion)" +
-			"VALUES (:numeracion, :id_ranking, :nombre_tienda, :telefono_tienda, :id_ubicacion)";
+			"INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, id_ubicacion)" +
+			"VALUES (:id_ranking, :nombre_tienda, :telefono_tienda, :id_ubicacion)";
 
 		try (Connection con = sql2o.open()) {
 		    int id = con.createQuery(insertSql,true)
