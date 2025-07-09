@@ -17,5 +17,4 @@ public class BoletaService {
     public BoletaEntity create(BoletaEntity boleta){return boletaRepo.create(boleta); }
     public BoletaEntity update(BoletaEntity boleta, int id_boleta){return boletaRepo.update(boleta, id_boleta); }
     public void delete(int id){boletaRepo.delete(id);}
-
 }
