@@ -59,10 +59,10 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
     }
 
    @Override
-   public List<UsuarioEntity> getUser(int id_usuario) {
+   public UsuarioEntity getUser(int id_usuario) {
         String sql = "SELECT * FROM USUARIO WHERE id_usuario = :id_usuario";
         try (Connection con = sql2o.open()) {
-            return con.createQuery(sql).addParameter("id_usuario",id_usuario).executeAndFetch(UsuarioEntity.class);
+            return con.createQuery(sql).addParameter("id_usuario",id_usuario).executeAndFetchFirst(UsuarioEntity.class);
 
         }
         catch (Exception e) {

@@ -26,7 +26,7 @@ VALUES
 ('credito','BCI','Ana Ramírez',576378,'2025-02-28',576378,'11.654.789-4'),
 ('credito','Banco_Falabella','Lucas Díaz',9836472,'2027-04-03',121378,'12.654.821-7');
 
-INSERT INTO USUARIO (id_ubicacion, correo_usuario, contraseña, nombre_real, nombre_usuario) VALUES // FALTA ID LISTA
+INSERT INTO USUARIO (id_ubicacion, correo_usuario, contraseña, nombre_real, nombre_usuario) VALUES
 (1, 'juan.perez@example.com', 'clave123', 'Juan Pérez', 'juanp'),
 (2, 'maria.gomez@example.com', 'pass456', 'María Gómez', 'mariag'),
 (3, 'carlos.lopez@example.com', 'admin789', 'Carlos López', 'carlosl'),
@@ -40,7 +40,7 @@ INSERT INTO TIENDA (id_ranking, nombre_tienda, telefono_tienda, id_ubicacion) VA
  (5,'Gato Joker','918124657',5),
  (1,'Cartas Locas','926654161',2);
 
-INSERT INTO ROL (id_rol, id_usuario, nombre_rol) VALUES // NO DEBERIA ESTAR ID ROL O SI?
+INSERT INTO ROL (id_rol, id_usuario, nombre_rol) VALUES
 (1, 1, 'cliente'),         
 (1, 2, 'cliente'),         
 (2, 3, 'administrador'),   

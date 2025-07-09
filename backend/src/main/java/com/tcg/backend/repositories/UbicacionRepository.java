@@ -13,7 +13,7 @@ public interface UbicacionRepository {
 
     List<UbicacionEntity> AllLocations();
 
-    List<UbicacionEntity> Location_for_id(int id_ubicacion);
+    UbicacionEntity Location_for_id(int id_ubicacion);
 
     // UPDATE
 

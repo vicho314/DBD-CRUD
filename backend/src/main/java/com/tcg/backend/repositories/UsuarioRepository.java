@@ -11,7 +11,7 @@ public interface UsuarioRepository {
     // READ
     List<UsuarioEntity> getAllUsers();
 
-    List<UsuarioEntity> getUser(int id_usuario);
+    UsuarioEntity getUser(int id_usuario);
 
     // UPDATE
     UsuarioEntity update(UsuarioEntity usuario, int id_usuario);
