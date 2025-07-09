@@ -1,6 +1,6 @@
 package com.tcg.backend.entities;
 
-public class BoletaProducto {
+public class BoletaProductoEntity {
     private int id_producto;
     private int id_boleta;
 
