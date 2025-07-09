@@ -51,12 +51,12 @@ public class UbicacionRepositoryImp implements UbicacionRepository {
         return null;
     }
     @Override
-    public List<UbicacionEntity> Location_for_id(int id_ubicacion) {
+    public UbicacionEntity Location_for_id(int id_ubicacion) {
         try (Connection con = sql2o.open()) {
             String sql = "SELECT * FROM UBICACION WHERE id_ubicacion = :id_ubicacion";
             return con.createQuery(sql)
                     .addParameter("id_ubicacion", id_ubicacion)
-                    .executeAndFetch(UbicacionEntity.class);
+                    .executeAndFetchFirst(UbicacionEntity.class);
         }catch (Exception e){
             System.out.println(e);
         }
