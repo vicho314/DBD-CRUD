@@ -23,5 +23,5 @@ public interface PermisosRepository {
 
     // DELETE
 
-    public void DeletePermission(int id_permiso);
+    public boolean DeletePermission(int id_permiso);
 }

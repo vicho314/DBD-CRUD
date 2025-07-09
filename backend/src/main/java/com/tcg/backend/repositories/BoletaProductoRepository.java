@@ -1,6 +1,6 @@
 package com.tcg.backend.repositories;
 
-import com.tcg.backend.entities.BoletaProducto;
+import com.tcg.backend.entities.BoletaProductoEntity;
 //import com.tcg.backend.entities.RankingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,7 +28,7 @@ public class BoletaProductoRepository {
         }
     }
 
-    public BoletaProductoEntity findByIdBoleta(int id_boleta){
+    public List<BoletaProductoEntity> findByIdBoleta(int id_boleta){
         String sql =
                 "SELECT * " +
                         "FROM BOLETA_X_PRODUCTO WHERE id_boleta = :id_boleta";
@@ -36,7 +36,19 @@ public class BoletaProductoRepository {
         try(Connection con = sql2o.open()) {
             return con.createQuery(sql)
                     .addParameter("id_boletaProducto",id_boleta)
-                    .executeAndFetchFirst(BoletaProductoEntity.class); //First retorna el objeto, no List
+                    .executeAndFetch(BoletaProductoEntity.class); //First retorna el objeto, no List
+        }
+    }
+
+    public List<BoletaProductoEntity> findByIdProducto(int id_producto){
+        String sql =
+                "SELECT * " +
+                        "FROM BOLETA_X_PRODUCTO WHERE id_producto = :id_producto";
+
+        try(Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("id_producto",id_producto)
+                    .executeAndFetch(BoletaProductoEntity.class); //First retorna el objeto, no List
         }
     }
 
@@ -47,10 +59,10 @@ public class BoletaProductoRepository {
                         "VALUES (:id_producto, :id_boleta)";
 
         try (Connection con = sql2o.open()) {
-            int id = con.createQuery(insertSql)
+            con.createQuery(insertSql)
                     .addParameter("id_producto", boletaProducto.getId_producto())
                     .addParameter("id_boleta", boletaProducto.getId_boleta())
-                    .executeUpdate()
+                    .executeUpdate();
                     //.getKey(Integer.class); //importante: setear id nueva del objeto!
 
             return boletaProducto;

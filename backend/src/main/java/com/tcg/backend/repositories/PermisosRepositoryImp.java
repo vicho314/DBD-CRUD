@@ -82,14 +82,16 @@ public class PermisosRepositoryImp implements PermisosRepository {
     // DELETE
 
     @Override
-    public void DeletePermission(int id_permiso) {
+    public boolean DeletePermission(int id_permiso) {
         try (Connection con = sql2o.open()) {
             String sql = "DELETE FROM PERMISOS WHERE id_permiso = :id_permiso";
             con.createQuery(sql)
                     .addParameter("id_permiso", id_permiso)
                     .executeUpdate();
+            return true;
         }catch (Exception e){
             System.out.println(e);
+            return false;
         }
     }
 }

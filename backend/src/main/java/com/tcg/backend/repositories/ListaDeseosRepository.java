@@ -1,6 +1,7 @@
 package com.tcg.backend.repositories;
 
 import com.tcg.backend.entities.ListaDeseosEntity;
+import com.tcg.backend.entities.TiendaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
@@ -41,6 +42,22 @@ public class ListaDeseosRepository{
                     .getKey(Integer.class);
 
             lista.setId_lista(id);
+            return lista;
+        }
+    }
+
+    public ListaDeseosEntity update(ListaDeseosEntity lista) {
+        String sql = """
+                UPDATE lista_de_deseos
+                SET nombre_lista = :nombre_lista
+                WHERE id_lista = :id_lista 
+        """;
+        try  (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("nombre_lista", lista.getNombre_lista())
+                    .addParameter("id_lista", lista.getId_lista())
+                    .executeUpdate();
+
             return lista;
         }
     }

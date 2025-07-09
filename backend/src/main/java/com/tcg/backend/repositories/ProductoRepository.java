@@ -42,7 +42,7 @@ public class ProductoRepository {
     }
 
     //READ
-    public List<ProductoEntity> getAll() {
+    public List<ProductoEntity> findAll() {
         String sql = "SELECT * FROM PRODUCTO";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql).executeAndFetch(ProductoEntity.class);
@@ -53,7 +53,7 @@ public class ProductoRepository {
         }
     }
 
-    public ProductoEntity getById(int id){
+    public ProductoEntity findById(int id){
         String sql = "SELECT * FROM PRODUCTO WHERE id_producto = :id_producto";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql)
@@ -87,13 +87,15 @@ public class ProductoRepository {
     }
 
     //DELETE
-    public void delete(int id) {
+    public boolean delete(int id) {
         String sql = "DELETE FROM PRODUCTO WHERE id_producto = :id_producto";
         try (Connection conn = sql2o.open()) {
             conn.createQuery(sql).addParameter("id_producto",id).executeUpdate();
+            return true;
         }
         catch (Exception e) {
             System.out.println("Error al eliminar la unión entre el producto y su categoria"+e.getMessage());
+            return false;
         }
     }
 }

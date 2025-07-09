@@ -21,7 +21,7 @@ public interface UbicacionRepository {
 
     // DELETE
 
-    void DeleteLocation(int id_ubicacion);
+    boolean DeleteLocation(int id_ubicacion);
 
 }
 

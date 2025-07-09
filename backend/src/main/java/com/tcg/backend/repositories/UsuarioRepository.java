@@ -17,5 +17,5 @@ public interface UsuarioRepository {
     UsuarioEntity update(UsuarioEntity usuario, int id_usuario);
 
     // DELETE
-    void DeleteUSER(int id_usuario);
+    boolean DeleteUSER(int id_usuario);
 }
