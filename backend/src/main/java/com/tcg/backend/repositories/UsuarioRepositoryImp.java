@@ -25,11 +25,11 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
                 "VALUES(:id_lista, :id_ubicacion, :id_metodo_pago, :correo_usuario, :contraseña, :nombre_real, :nombre_usuario)";
         try (Connection con = sql2o.open()) {
             int id_usuario = con.createQuery(sql, true)
-                    .addParameter("id_lista",usuario.getNombre_usuario())
+                    .addParameter("id_lista",usuario.getId_lista())
                     .addParameter("id_ubicacion",usuario.getId_ubicacion())
                     .addParameter("id_metodo_pago",usuario.getId_metodo_pago())
                     .addParameter("correo_usuario", usuario.getCorreo_usuario())
-                    .addParameter("Contraseña", usuario.getContraseña())
+                    .addParameter("contraseña", usuario.getContraseña())
                     .addParameter("nombre_real", usuario.getNombre_real())
                     .addParameter("nombre_usuario", usuario.getNombre_usuario())
                     .executeUpdate()

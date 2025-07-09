@@ -21,13 +21,12 @@ public class UbicacionRepositoryImp implements UbicacionRepository {
     @Override
     public UbicacionEntity CreateLocation(UbicacionEntity ubicacion){
         String sql = "INSERT INTO UBICACION(numeracion,ciudad,calle)"
-                + "VALUES (:numeracion,:ciudad,:calle))";
+                + "VALUES (:numeracion,:ciudad,:calle)";
         try (Connection con = sql2o.open()) {
             int id_ubicacion = con.createQuery(sql, true)
                     .addParameter("numeracion", ubicacion.getNumeracion())
                     .addParameter("ciudad", ubicacion.getCiudad())
                     .addParameter("calle", ubicacion.getCalle())
-                    .addParameter("id_ubicacion", ubicacion.getId_ubicacion())
                     .executeUpdate()
                     .getKey(Long.class);
             ubicacion.setId_ubicacion(id_ubicacion);
@@ -67,7 +66,7 @@ public class UbicacionRepositoryImp implements UbicacionRepository {
     @Override
     public UbicacionEntity UpdateLocation(UbicacionEntity ubicacion, int id_ubicacion){
         try (Connection con = sql2o.open()) {
-            String sql = "UPDATE UBICACION SET numeracion = :numeracion, ciudad = :ciudad, calle = :calle, WHERE id_ubicacion = :id_ubicacion";
+            String sql = "UPDATE UBICACION SET numeracion = :numeracion, ciudad = :ciudad, calle = :calle WHERE id_ubicacion = :id_ubicacion";
             con.createQuery(sql, true)
                     .addParameter("numeracion", ubicacion.getNumeracion())
                     .addParameter("ciudad", ubicacion.getCiudad())

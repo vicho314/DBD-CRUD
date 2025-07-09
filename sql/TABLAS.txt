@@ -65,12 +65,10 @@ CREATE TABLE IF NOT EXISTS ROL
 	id_rol INT,
 	id_usuario INT,
 	id_tienda INT,
-	id_ranking INT,
 	nombre_rol TEXT NOT NULL,
 	PRIMARY KEY(id_rol,id_usuario),
 	FOREIGN KEY(id_usuario) REFERENCES USUARIO(id_usuario),
 	FOREIGN KEY(id_tienda) REFERENCES TIENDA(id_tienda),
-	FOREIGN KEY(id_ranking) REFERENCES RANKING(id_ranking)
 );
 
 CREATE TABLE IF NOT EXISTS PERMISOS

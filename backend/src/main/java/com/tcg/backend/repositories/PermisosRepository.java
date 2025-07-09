@@ -1,8 +1,6 @@
 package com.tcg.backend.repositories;
 
 import com.tcg.backend.entities.PermisosEntity;
-import com.tcg.backend.entities.PermisosEntity;
-
 import java.util.List;
 
 public interface PermisosRepository {

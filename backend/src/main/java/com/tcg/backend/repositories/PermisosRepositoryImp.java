@@ -26,7 +26,6 @@ public class PermisosRepositoryImp implements PermisosRepository {
             int id_permiso = con.createQuery(sql, true)
                     .addParameter("id_rol", permiso.getId_rol())
                     .addParameter("id_usuario", permiso.getId_usuario())
-                    .addParameter("id_permiso", permiso.getId_permiso())
                     .executeUpdate()
                     .getKey(Long.class);
             permiso.setId_permiso(id_permiso);
@@ -66,7 +65,7 @@ public class PermisosRepositoryImp implements PermisosRepository {
     @Override
     public  PermisosEntity UpdatePermission(PermisosEntity permiso, int id_permiso) {
         try (Connection con = sql2o.open()) {
-            String sql = "UPDATE UBICACION SET id_rol = :id_rol, id_usuario = :id_usuario WHERE id_permiso = :id_permiso";
+            String sql = "UPDATE PERMISOS SET id_rol = :id_rol, id_usuario = :id_usuario WHERE id_permiso = :id_permiso";
             con.createQuery(sql,true)
                     .addParameter("id_rol", permiso.getId_rol())
                     .addParameter("id_usuario", permiso.getId_usuario())
