@@ -23,17 +23,17 @@ public class ValoracionService {
     }
 
     public boolean check(int id_user, int id_prod){
-	return valoracionRepo.check(id_user, id_prod);
+	return valoracionRepo.checkUserProd(id_user, id_prod);
     }
 
     public ValoracionEntity make(ValoracionEntity valoracion){
-	int id_user = valoracion.getId_usuario(); 
-	int id_prod = valoracion.getId_producto();
-	ValoracionEntity valNew = new ValoracionEntity(); 
-	if(!valoracionRepo.check(id_user,id_prod)){
-		valNew = valoracionRepo.save(ValoracionEntity);
-	    }
-	return valNew;
+	    int id_user = valoracion.getId_usuario();
+	    int id_prod = valoracion.getId_producto();
+	    ValoracionEntity valNew = new ValoracionEntity();
+	    if(!valoracionRepo.checkUserProd(id_user,id_prod)){
+		    valNew = valoracionRepo.save(valoracion);
+        }
+	    return valNew;
     }
 
     public ValoracionEntity update(ValoracionEntity valoracion){
