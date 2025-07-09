@@ -8,7 +8,6 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
-
 public class UbicacionRepositoryImp implements UbicacionRepository {
 
     private Sql2o sql2o;
@@ -83,12 +82,14 @@ public class UbicacionRepositoryImp implements UbicacionRepository {
     // DELETE
 
     @Override
-    public void DeleteLocation(int id_ubicacion) {
+    public boolean DeleteLocation(int id_ubicacion) {
         try (Connection con = sql2o.open()) {
             String sql = "DELETE FROM UBICACION WHERE id_ubicacion = :id_ubicacion";
             con.createQuery(sql).addParameter("id_ubicacion", id_ubicacion).executeUpdate();
+            return true;
         }catch (Exception e){
             System.out.println(e);
+            return false;
         }
     }
 }

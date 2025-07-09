@@ -14,7 +14,6 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
     @Autowired
     public UsuarioRepositoryImp(Sql2o sql2o) {
         this.sql2o = sql2o;
-
     }
 
     // CREATE
@@ -33,7 +32,7 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
                     .addParameter("nombre_real", usuario.getNombre_real())
                     .addParameter("nombre_usuario", usuario.getNombre_usuario())
                     .executeUpdate()
-                    .getKey(long.class);
+                    .getKey(Integer.class);
 
             usuario.setId_usuario(id_usuario);
             return usuario;
@@ -75,7 +74,7 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
     @Override
     public UsuarioEntity update(UsuarioEntity usuario, int id_usuario) {
         String sql = "UPDATE USUARIO SET id_lista = :id_lista, id_ubicacion = :id_ubicacion, id_metodo_pago = :id_metodo_pago, " +
-                "correo_usuario = :correo_usuario, \"contraseña\" = :contraseña, nombre_real = :nombre_real, nombre_usuario = :nombre_usuario WHERE id_usuario = :id_usuario ";
+                "correo_usuario = :correo_usuario, contraseña = :contraseña, nombre_real = :nombre_real, nombre_usuario = :nombre_usuario WHERE id_usuario = :id_usuario";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql, true)
                     .addParameter("id_usuario", id_usuario)
@@ -98,13 +97,15 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
     // DELETE
 
     @Override
-    public void DeleteUSER(int id_usuario) {
+    public boolean DeleteUSER(int id_usuario) {
         String sql = "DELETE FROM USUARIO WHERE id_usuario = :id_usuario";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql).addParameter("id_usuario",id_usuario).executeUpdate();
+            return true;
         }
         catch (Exception e) {
             System.out.println(e);
+            return false;
         }
     }
 }

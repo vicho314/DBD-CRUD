@@ -1,15 +1,15 @@
 package com.tcg.backend.entities;
 
-public class BOLETA_X_PRODUCTO {
+public class BoletaProductoEntity {
     private int id_producto;
     private int id_boleta;
 
-    public BOLETA_X_PRODUCTO(int id_producto,int id_boleta){
+    public BoletaProductoEntity(int id_producto,int id_boleta){
         this.id_producto = id_producto;
         this.id_boleta = id_boleta;
     }
 
-    public BOLETA_X_PRODUCTO(){
+    public BoletaProductoEntity(){
         this.id_producto = -1;
         this.id_boleta = -1;
     }
