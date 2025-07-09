@@ -19,16 +19,16 @@ public class ProductoRepository {
     }*/
 
     //CREATE
-    public ProductoRepository create(ProductoEntity producto) {
+    public ProductoEntity create(ProductoEntity producto) {
         String sql = "INSERT INTO PRODUCTO(id_ranking,id_tienda,stock,cantidad_vendida,url)" +
                 "VALUES (:id_ranking,:id_tienda,:stock,:cantidad_vendida,:url)";
         try(Connection conn = sql2o.open()) {
             int id = conn.createQuery(sql,true)
-                    .addParameter("id_ranking",producto.getid_ranking())
-                    .addParameter("id_tienda",producto.getid_tienda())
-                    .addParameter("stock",producto.getstock())
-                    .addParameter("cantidad_vendida",producto.getcantidad_vendida())
-                    .addParameter("url",producto.geturl())
+                    .addParameter("id_ranking",producto.getId_ranking())
+                    .addParameter("id_tienda",producto.getId_tienda())
+                    .addParameter("stock",producto.getStock())
+                    .addParameter("cantidad_vendida",producto.getCantidad_vendida())
+                    .addParameter("url",producto.getUrl())
                     .executeUpdate()
                     .getKey(Integer.class);
 
@@ -42,7 +42,6 @@ public class ProductoRepository {
     }
 
     //READ
-    @Override
     public List<ProductoEntity> getAll() {
         String sql = "SELECT * FROM PRODUCTO";
         try (Connection conn = sql2o.open()) {
@@ -59,7 +58,7 @@ public class ProductoRepository {
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql)
                     .addParameter("id_producto",id)
-                    .executeAndFetchFirst(ProductoRepositorylmp.class);
+                    .executeAndFetchFirst(ProductoEntity.class);
         }
         catch (Exception e) {
             System.out.println("Error al consultar la unión entre el producto y su categoria"+e.getMessage());
@@ -71,12 +70,12 @@ public class ProductoRepository {
     public boolean update(ProductoEntity producto) {
         String sql = "UPDATE PRODUCTO SET id_ranking = :id_ranking, id_tienda = :id_tienda, stock = :stock, cant_vendida = :cant_vendida, url = :url WHERE id_producto= :id_producto";
         try (Connection con = sql2o.open()) {
-            conn.createQuery(sql)
+            con.createQuery(sql)
                     .addParameter("id_producto",producto.getId_producto())
                     .addParameter("id_ranking",producto.getId_ranking())
 		    .addParameter("id_tienda",producto.getId_tienda())
                     .addParameter("stock",producto.getStock())
-                    .addParameter("cant_vendida",producto.getCant_vendida())
+                    .addParameter("cant_vendida",producto.getCantidad_vendida())
                     .addParameter("url",producto.getUrl())
                     .executeUpdate();
             return true;
@@ -88,7 +87,6 @@ public class ProductoRepository {
     }
 
     //DELETE
-    @Override
     public void delete(int id) {
         String sql = "DELETE FROM PRODUCTO WHERE id_producto = :id_producto";
         try (Connection conn = sql2o.open()) {
