@@ -88,6 +88,8 @@ public class RankingRepository {
                     .executeUpdate();
 
             return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

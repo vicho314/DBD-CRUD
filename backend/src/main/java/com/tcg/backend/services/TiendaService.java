@@ -12,11 +12,19 @@ public class TiendaService {
 	@Autowired
 	private TiendaRepository tiendaRepo;
 
+	public TiendaEntity getById(int id){
+		return tiendaRepo.findById(id);
+	}
 	public List<TiendaEntity> getAll(){
 		return tiendaRepo.findAll();
 	}
-
 	public TiendaEntity save(TiendaEntity tienda){
 		return tiendaRepo.save(tienda);
+	}
+	public TiendaEntity update(TiendaEntity tienda){
+		return tiendaRepo.update(tienda);
+	}
+	public boolean delete(TiendaEntity tienda){
+		return tiendaRepo.delete(tienda);
 	}
 }

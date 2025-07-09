@@ -92,6 +92,8 @@ public class ValoracionRepository {
                     .executeUpdate();
 
             return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }

@@ -94,6 +94,8 @@ public class JuegosMesaRepository {
                     .executeUpdate();
 
             return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 }
