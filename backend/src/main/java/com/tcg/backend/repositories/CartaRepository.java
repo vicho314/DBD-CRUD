@@ -30,9 +30,25 @@ public class CartaRepository{
     }
     public CartaEntity save (CartaEntity carta){
         String sql = """
-                INSERT INTO carta (posicion_deseada, precio, stock, rareza, año, estado, id_producto)
-                VALUES (:posicion_deseada, :precio, :stock, :rareza, :año, :estado, :id_producto)
-        """;
+                INSERT INTO carta (
+                    posicion_deseada,
+                    precio,
+                    stock,
+                    rareza, 
+                    año,
+                    estado,
+                    id_producto
+                )
+                VALUES (
+                    :posicion_deseada,
+                    :precio,
+                    :stock,
+                    :rareza,
+                    :año,
+                    :estado,
+                    :id_producto
+               )
+               """;
         try (Connection con = sql2o.open()){
             int id = con.createQuery(sql, true)
                     .addParameter("posicion_deseada", carta.getPosicion_deseada())
