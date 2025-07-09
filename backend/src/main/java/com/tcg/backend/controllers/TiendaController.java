@@ -21,10 +21,26 @@ public class TiendaController {
 		return tiendaService.getAll();
 	}
 
+	@GetMapping("/{id}")
+	public TiendaEntity getById(@PathVariable int id){
+		return tiendaService.getById(id);
+	}
+
 	//FIXME: manejo de errores!
 	@PostMapping("/save")
 	public TiendaEntity save(@RequestBody TiendaEntity tienda){
 		TiendaEntity tiendaNew = tiendaService.save(tienda);
 		return tienda;
+	}
+
+	@PutMapping("/update")
+	public TiendaEntity update(@RequestBody TiendaEntity tienda){
+		TiendaEntity tiendaNew = tiendaService.update(tienda);
+		return tienda;
+	}
+
+	@DeleteMapping("/delete")
+	public boolean delete(@RequestBody TiendaEntity tienda){
+		return tiendaService.delete(tienda);
 	}
 }
