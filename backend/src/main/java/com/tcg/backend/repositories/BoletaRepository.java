@@ -6,17 +6,20 @@ import java.util.List;
 
 public interface BoletaRepository {
 
+    //CREATE
+    BoletaEntity create(BoletaEntity boleta);
+
     //READ
     List<BoletaEntity> findAll();
     BoletaEntity findById(int id_boleta);
 
     //UPDATE
-    BoletaEntity Update(BoletaEntity boleta, int id_boleta);
+    BoletaEntity update(BoletaEntity boleta, int id_boleta);
 
     //DELETE
-    void Delete(int id_boleta);
+    void delete(int id_boleta);
 
 
-    //CREATE
-    BoletaEntity Create(BoletaEntity boleta);
+
+
 }

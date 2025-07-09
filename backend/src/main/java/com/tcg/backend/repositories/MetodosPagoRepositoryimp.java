@@ -20,8 +20,8 @@ public abstract class MetodosPagoRepositoryimp implements MetodosPagoRepository 
     //CREATE
     @Override
     public MetodosPagoEntity Create(MetodosPagoEntity metodospago) {
-        String sql = "INSERT INTO METODOSPAGO(int id_metodo_de_pago, String tipo_de_pago, String banco, String nombre_titular, int numero_tarjeta, Date fecha_vencimiento, int codigo_seguridad, int rut_titular)" +
-                "VALUES(:int id_metodo_de_pago, :String tipo_de_pago, :String banco, :String nombre_titular, :int numero_tarjeta, :Date fecha_vencimiento, :int codigo_seguridad, :int rut_titular)";
+        String sql = "INSERT INTO METODOSPAGO(id_metodo_de_pago, tipo_de_pago, Sbanco, nombre_titular,numero_tarjeta, fecha_vencimiento,codigo_seguridad, rut_titular)" +
+                "VALUES(:id_metodo_de_pago, :tipo_de_pago, :banco, :String nombre_titular, :numero_tarjeta, :fecha_vencimiento, :codigo_seguridad, :rut_titular)";
         try (Connection con = sql2o.open()){
             int id_metodo_de_pago = con.createQuery(sql, true)
                     .addParameter("id_metodo_de_pago", metodospago.getId_metodo_de_pago())
@@ -72,7 +72,7 @@ public abstract class MetodosPagoRepositoryimp implements MetodosPagoRepository 
     }
 
     //UPDATE
-    public MetodosPagoEntity Update(MetodosPagoEntity metodospago, int id_metodo_de_pago){
+    public MetodosPagoEntity update(MetodosPagoEntity metodospago, int id_metodo_de_pago){
         try (Connection con = sql2o.open()){
             String sql = "UPDATE METODOSPAGO SET id_metodo_de_pago = :id_metodo_de_pago, tipo_de_pago = :tipo_de_pago, banco = :banco, nombre_titular = :nombre_titular," +
                     " numero_tarjeta = :numero_tarjeta, fecha_vencimiento = :fecha_vencimiento, codigo_seguridad = :codigo_seguridad, rut_titular = :rut_titular";
@@ -98,7 +98,7 @@ public abstract class MetodosPagoRepositoryimp implements MetodosPagoRepository 
     //DELETE
 
     @Override
-    public void Delete(int id_metodo_de_pago) {
+    public void delete(int id_metodo_de_pago) {
         String sql = "DELETE FROM METODOSPAGO WHERE id_metodo_de_pago = :id_metodo_de_pago";
         try (Connection con = sql2o.open()){
             con.createQuery(sql).addParameter("id_metodo_de_pago", id_metodo_de_pago).executeUpdate();

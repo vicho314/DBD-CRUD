@@ -20,9 +20,9 @@ public abstract class CarritoRepositoryimp implements CarritoRepository {
 
     //CREATE
     @Override
-    public CarritoEntity Create(CarritoEntity carrito){
-        String sql = "INSERT INTO CARRITO(int id_carro, int id_metodo_pago, int id_usuario, Boolean estado_carrito, int cantidad_elementos, Double total_pago) " +
-                "VALUES(:int id_carro, :int id_metodo_pago, :int id_usuario, :Boolean estado_carrito, :int cantidad_elementos, :Double total_pago)";
+    public CarritoEntity create(CarritoEntity carrito){
+        String sql = "INSERT INTO CARRITO( id_carro,id_metodo_pago, id_usuario,  estado_carrito, cantidad_elementos, total_pago) " +
+                "VALUES(:id_carro, :id_metodo_pago, :id_usuario, :estado_carrito, :cantidad_elementos, :otal_pago)";
 
         try(Connection con = sql2o.open()){
             int id_carro = con.createQuery(sql, true)
@@ -57,7 +57,7 @@ public abstract class CarritoRepositoryimp implements CarritoRepository {
         return null;
     }
     @Override
-    public CarritoEntity FindById(int id_carro) {
+    public CarritoEntity findById(int id_carro) {
         try(Connection con = sql2o.open()){
             String sql = "SELECT * FROM CARRITO WHERE id_carro = :id_carro";
             return (CarritoEntity) Collections.singletonList(con.createQuery(sql)
@@ -71,9 +71,30 @@ public abstract class CarritoRepositoryimp implements CarritoRepository {
     }
 
     //UPDATE
+    public CarritoEntity update(CarritoEntity carrito, int id_carro){
+        try(Connection con = sql2o.open()){
+            String sql = "UPDATE CARRITO SET id_carro = :id_carro, id_metodo_pago = :id_metodo_pago, id_usuario = :id_usuario," +
+            " estado_carrito = :estado_carrito, cantidad_elementos = :cantidad_elementos, total_pago = :total_pago";
+            con.createQuery(sql, true)
+                    .addParameter("id_carro", carrito.getId_carro())
+                    .addParameter("id_metodo_pago", carrito.getId_metodo_pago())
+                    .addParameter("id_usuario", carrito.getId_usuario())
+                    .addParameter("estado_carrito", carrito.getEstado_carrito())
+                    .addParameter("cantidad_elementos", carrito.getCantidad_elementos())
+                    .addParameter("total_pago", carrito.getTotal_pago())
+                    .executeUpdate();
+            return carrito;
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        return null;
+    }
 
+
+    //DELETE
     @Override
-    public void Delete(int id_carro) {
+    public void delete(int id_carro) {
         String sql = "DELETE FROM CARRITO WHERE id_carro = :id_carro";
         try(Connection con = sql2o.open()){
             con.createQuery(sql).addParameter("id_carro", id_carro).executeUpdate();

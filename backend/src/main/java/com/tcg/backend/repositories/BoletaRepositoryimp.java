@@ -20,7 +20,7 @@ public abstract class BoletaRepositoryimp implements BoletaRepository {
 
     //CREATE
     @Override
-    public BoletaEntity Create(BoletaEntity boleta) {
+    public BoletaEntity create(BoletaEntity boleta) {
         String sql = "INSERT INTO BOLETA(id_boleta, id_carro, id_metodo_de_pago,fecha_boleta)" +
                 "VALUES(:id_boleta, :id_carro, :id_metodo_de_pago, :fecha_boleta)";
         try (Connection con = sql2o.open()){
@@ -69,7 +69,7 @@ public abstract class BoletaRepositoryimp implements BoletaRepository {
 
     //UPDATE
     @Override
-    public BoletaEntity Update(BoletaEntity boleta, int id_boleta){
+    public BoletaEntity update(BoletaEntity boleta, int id_boleta){
         try (Connection con = sql2o.open()){
             String sql = "UPDATE BOLETA SET id_boleta = :id_boleta,  id_carro = : id_carro, id_metodo_de_pago = :id_metodo_de_pago," +
                     " fecha_boleta = :fecha_boleta)";
@@ -90,7 +90,7 @@ public abstract class BoletaRepositoryimp implements BoletaRepository {
     //DELETE
 
     @Override
-    public void Delete(int id_boleta){
+    public void delete(int id_boleta){
         String sql = "DELETE FROM BOLETA WHERE id_boleta = :id_boleta";
         try (Connection con = sql2o.open()){
             con.createQuery(sql).addParameter("id_boleta", id_boleta).executeUpdate();

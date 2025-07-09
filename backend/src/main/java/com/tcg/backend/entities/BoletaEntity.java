@@ -54,6 +54,7 @@ public class BoletaEntity{
 	public void setId_metodo_de_pago(int id_metodo_de_pago) {
 		this.id_metodo_de_pago = id_metodo_de_pago;
 	}
+
 }
 
 

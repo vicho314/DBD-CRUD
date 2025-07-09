@@ -8,17 +8,17 @@ public interface CarritoRepository {
 
     //CREATE
 
-    CarritoEntity Create(CarritoEntity carrito);
+    CarritoEntity create(CarritoEntity carrito);
 
     //READ
     List<CarritoEntity> findAll();
-    CarritoEntity FindById(int id_carro);
+    CarritoEntity findById(int id_carro);
 
     //UPDATE
-    CarritoEntity Update(CarritoEntity carrito, int id_carro);
+    CarritoEntity update(CarritoEntity carrito, int id_carro);
 
     //DELETE
-    void Delete(int id_carro);
+    void delete(int id_carro);
 
 }
 

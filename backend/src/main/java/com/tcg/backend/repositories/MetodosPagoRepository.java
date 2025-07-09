@@ -7,8 +7,11 @@ import java.util.List;
 public interface MetodosPagoRepository {
 
     //CREATE
-    MetodosPagoEntity Create(MetodosPagoEntity metodospago);
+    MetodosPagoEntity create(MetodosPagoEntity metodospago);
 
+
+    //CREATE
+    MetodosPagoEntity Create(MetodosPagoEntity metodospago);
 
     //READ
     List<MetodosPagoEntity>  findAll();
@@ -16,13 +19,12 @@ public interface MetodosPagoRepository {
 
 
     //UPDATE
-    MetodosPagoEntity Update(MetodosPagoEntity metodospago,  int id_metodo_de_pago );
+    MetodosPagoEntity update(MetodosPagoEntity metodospago,  int id_metodo_de_pago );
 
 
     //DELETE
     void delete(int id_metodopago);
 
 
-    void Delete(int id_metodo_de_pago);
 }
 
