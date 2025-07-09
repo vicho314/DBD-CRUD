@@ -23,7 +23,7 @@ public class ValoracionService {
     }
 
     public boolean check(int id_user, int id_prod){
-	return valoracionRepo.check(id_user, id_prod)
+	return valoracionRepo.check(id_user, id_prod);
     }
 
     public ValoracionEntity make(ValoracionEntity valoracion){

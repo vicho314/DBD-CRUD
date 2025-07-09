@@ -52,12 +52,12 @@ public class ValoracionRepository {
                     .executeAndFetch(ValoracionEntity.class);
 	    if(res.isEmpty()){
 		    return false;
-	    }
-	    else{
+	    } else{
 		    return true;
-	    }
-    }
+	                }
+            }
 
+        }
     //FIXME: revisar CHECK en def. de tabla
     public ValoracionEntity save(ValoracionEntity valoracion){
         String insertSql =
