@@ -1,6 +1,6 @@
 package com.tcg.backend.repositories;
 
-import com.tcg.backend.entities.Lista_de_deseosXCartaEntity;
+import com.tcg.backend.entities.LISTA_DE_DESEOSXCARTAEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
@@ -9,18 +9,18 @@ import org.sql2o.Sql2o;
 import java.util.List;
 
 @Repository
-public class Lista_de_deseosXCartaRepository {
+public class LISTA_DE_DESEOSXCARTARepository {
     @Autowired
     private Sql2o sql2o;
 
-    public List<Lista_de_deseosXCartaEntity> findAll() {
+    public List<LISTA_DE_DESEOSXCARTAEntity> findAll() {
         String sql = "SELECT * FROM LISTA_DE_DESEOSXCARTA";
         try (Connection con = sql2o.open()) {
-            return con.createQuery(sql).executeAndFetch(Lista_de_deseosXCartaEntity.class);
+            return con.createQuery(sql).executeAndFetch(LISTA_DE_DESEOSXCARTAEntity.class);
         }
     }
 
-    public Lista_de_deseosXCartaEntity findById(int idLista, int idCarta) {
+    public LISTA_DE_DESEOSXCARTAEntity findById(int idLista, int idCarta) {
         String sql = """
                 SELECT * FROM LISTA_DE_DESEOSXCARTA
                 WHERE id_lista = :id_lista AND id_carta = :id_carta
@@ -29,11 +29,11 @@ public class Lista_de_deseosXCartaRepository {
             return con.createQuery(sql)
                     .addParameter("id_lista", idLista)
                     .addParameter("id_carta", idCarta)
-                    .executeAndFetchFirst(Lista_de_deseosXCartaEntity.class);
+                    .executeAndFetchFirst(LISTA_DE_DESEOSXCARTAEntity.class);
         }
     }
 
-    public Lista_de_deseosXCartaEntity save(Lista_de_deseosXCartaEntity entity) {
+    public LISTA_DE_DESEOSXCARTAEntity save(LISTA_DE_DESEOSXCARTAEntity entity) {
         String sql = """
                  INSERT INTO LISTA_DE_DESEOSXCARTA (
                      id_lista,
