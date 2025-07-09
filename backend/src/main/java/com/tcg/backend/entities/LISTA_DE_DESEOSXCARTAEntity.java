@@ -1,17 +1,17 @@
 package com.tcg.backend.entities;
 
-public class ListaDeseosXCartaEntity {
+public class Lista_de_deseosXCartaEntity {
     private int id_lista;
     private int id_carta;
     private int cantidad_veces_agregada;
 
-    public ListaDeseosXCartaEntity() {
+    public Lista_de_deseosXCartaEntity() {
         this.id_lista= -1;
         this.id_carta= -1;
         this.cantidad_veces_agregada = 0;
     }
 
-    public ListaDeseosXCartaEntity(int id_lista, int id_carta, int cantidad_veces_agregada) {
+    public Lista_de_deseosXCartaEntity(int id_lista, int id_carta, int cantidad_veces_agregada) {
         this.id_lista = id_lista;
         this.id_carta = id_carta;
         this.cantidad_veces_agregada = cantidad_veces_agregada;
