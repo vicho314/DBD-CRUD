@@ -40,6 +40,24 @@ public class ValoracionRepository {
         }
     }
 
+    public boolean checkUserProd(int id_user, int id_prod){
+	String sql =
+                "SELECT * " +
+                        "FROM VALORACION WHERE id_usuario = :id_usuario AND id_producto = :id_producto";
+
+        try(Connection con = sql2o.open()) {
+            List<ValoracionEntity> res = con.createQuery(sql)
+                    .addParameter("id_usuario",id_user)
+		    .addParameter("id_producto", id_prod)
+                    .executeAndFetch(ValoracionEntity.class);
+	    if(res.isEmpty()){
+		    return false;
+	    }
+	    else{
+		    return true;
+	    }
+    }
+
     //FIXME: revisar CHECK en def. de tabla
     public ValoracionEntity save(ValoracionEntity valoracion){
         String insertSql =

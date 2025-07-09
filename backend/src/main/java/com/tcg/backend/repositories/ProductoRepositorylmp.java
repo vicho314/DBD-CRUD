@@ -1,40 +1,39 @@
 package com.tcg.backend.repositories;
 
-//import com.tcg.backend.entities.RankingEntity;
+import com.tcg.backend.entities.ProductoEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-        import java.util.List;
+import java.util.List;
 
 @Repository
-public class ProductoRepositorylmp implements ProductoRepositorylmp {
-    private final Sql2o sql2o;
-
+public class ProductoRepository {
     @Autowired
-    public ProductoRepositorylmp(Sql2o sql2o) {
+    private Sql2o sql2o;
+
+    /*@Autowired
+    public ProductoRepository(Sql2o sql2o) {
         this.sql2o = sql2o;
-    }
+    }*/
 
     //CREATE
-    @Override
-    public ProductoRepositorylmp create(ProductoRepositorylmp ProductoRepository) {
-        String sql = "INSERT INTO PRODUCTO(id_producto,id_ranking,id_tienda,stock,cantidad_vendida,url)" +
-                "VALUES (:id_producto:id_ranking:id_tienda:stock:cantidad_vendida:url)";
+    public ProductoRepository create(ProductoEntity producto) {
+        String sql = "INSERT INTO PRODUCTO(id_ranking,id_tienda,stock,cantidad_vendida,url)" +
+                "VALUES (:id_ranking,:id_tienda,:stock,:cantidad_vendida,:url)";
         try(Connection conn = sql2o.open()) {
-            long id = conn.createQuery(sql,true)
-                    .addParameter("id_Producto",ProductoRepository.getIdProducto())
-                    .addParameter("id_ranking",ProductoRepository.getid_ranking())
-                    .addParameter("id_tienda",ProductoRepository.getid_tienda())
-                    .addParameter("stock",ProductoRepository.getstock())
-                    .addParameter("cantidad_vendida",ProductoRepository.getcantidad_vendida())
-                    .addParameter("url",ProductoRepository.geturl())
+            int id = conn.createQuery(sql,true)
+                    .addParameter("id_ranking",producto.getid_ranking())
+                    .addParameter("id_tienda",producto.getid_tienda())
+                    .addParameter("stock",producto.getstock())
+                    .addParameter("cantidad_vendida",producto.getcantidad_vendida())
+                    .addParameter("url",producto.geturl())
                     .executeUpdate()
-                    .getKey(Long.class);
+                    .getKey(Integer.class);
 
-            ProductoRepository.setIdProductoCategoria(id_Producto);
-            return ProductoRepository;
+            producto.setId_producto(id);
+            return producto;
         }
         catch (Exception e) {
             System.out.println("Error al crear la unión entre producto y categoria"+e.getMessage());
@@ -44,10 +43,10 @@ public class ProductoRepositorylmp implements ProductoRepositorylmp {
 
     //READ
     @Override
-    public List<ProductoRepositorylmp> getAll() {
-        String sql = "SELECT * FROM PRODUCTO_CATEGORIAPRODUCTO ORDER BY idProductoCategoriaProducto ASC";
+    public List<ProductoEntity> getAll() {
+        String sql = "SELECT * FROM PRODUCTO";
         try (Connection conn = sql2o.open()) {
-            return conn.createQuery(sql).executeAndFetch(ProductoRepositorylmp.class);
+            return conn.createQuery(sql).executeAndFetch(ProductoEntity.class);
         }
         catch (Exception e) {
             System.out.println("Error al consultar las uniones entre producto y categorias"+e.getMessage());
@@ -55,13 +54,12 @@ public class ProductoRepositorylmp implements ProductoRepositorylmp {
         }
     }
 
-    @Override
-    public List<ProductoRepositorylmp> getProductoCategoriaProducto(int id){
-        String sql = "SELECT * FROM PRODUCTO_CATEGORIAPRODUCTO WHERE idProductoCategoriaProducto = :id";
+    public ProductoEntity getById(int id){
+        String sql = "SELECT * FROM PRODUCTO WHERE id_producto = :id_producto";
         try (Connection conn = sql2o.open()) {
             return conn.createQuery(sql)
-                    .addParameter("id",id)
-                    .executeAndFetch(ProductoRepositorylmp.class);
+                    .addParameter("id_producto",id)
+                    .executeAndFetchFirst(ProductoRepositorylmp.class);
         }
         catch (Exception e) {
             System.out.println("Error al consultar la unión entre el producto y su categoria"+e.getMessage());
@@ -70,28 +68,31 @@ public class ProductoRepositorylmp implements ProductoRepositorylmp {
     }
 
     //UPDATE
-    @Override
-    public ProductoRepositorylmp update(ProductoRepositorylmp ProductoRepository, int id) {
-        String sql = "UPDATE PRODUCTO_CATEGORIAPRODUCTO SET IdProducto = :IdProducto WHERE idProductoCategoriaProducto = :id";
+    public boolean update(ProductoEntity producto) {
+        String sql = "UPDATE PRODUCTO SET id_ranking = :id_ranking, id_tienda = :id_tienda, stock = :stock, cant_vendida = :cant_vendida, url = :url WHERE id_producto= :id_producto";
         try (Connection con = sql2o.open()) {
             conn.createQuery(sql)
-                    .addParameter("id",id)
-                    .addParameter("IdProducto",ProductoRepository.getIdProducto())
+                    .addParameter("id_producto",producto.getId_producto())
+                    .addParameter("id_ranking",producto.getId_ranking())
+		    .addParameter("id_tienda",producto.getId_tienda())
+                    .addParameter("stock",producto.getStock())
+                    .addParameter("cant_vendida",producto.getCant_vendida())
+                    .addParameter("url",producto.getUrl())
                     .executeUpdate();
-            return ProductoRepository;
+            return true;
         }
         catch (Exception e) {
             System.out.println("Error al actualizar la unión entre el producto y su categoria"+e.getMessage());
-            return null;
+            return false;
         }
     }
 
     //DELETE
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM PRODUCTO_CATEGORIAPRODUCTO WHERE idProductoCategoriaProducto = :id";
+        String sql = "DELETE FROM PRODUCTO WHERE id_producto = :id_producto";
         try (Connection conn = sql2o.open()) {
-            conn.createQuery(sql).addParameter("id",id).executeUpdate();
+            conn.createQuery(sql).addParameter("id_producto",id).executeUpdate();
         }
         catch (Exception e) {
             System.out.println("Error al eliminar la unión entre el producto y su categoria"+e.getMessage());
