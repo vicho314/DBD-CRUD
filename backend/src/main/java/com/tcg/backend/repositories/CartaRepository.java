@@ -14,14 +14,14 @@ public class CartaRepository{
     private Sql2o sql2o;
 
     public List<CartaEntity> findAll(){
-        String sql = "SELECT * FROM carta";
+        String sql = "SELECT * FROM CARTA";
         try (Connection con = sql2o.open()){
             return con.createQuery(sql).executeAndFetch(CartaEntity.class);
         }
     }
 
     public CartaEntity findById(int id){
-        String sql = "SELECT * FROM carta WHERE id_carta = :id_carta";
+        String sql = "SELECT * FROM CARTA WHERE id_carta = :id_carta";
         try (Connection con = sql2o.open()){
             return con.createQuery(sql)
                     .addParameter("id_carta", id)
@@ -30,7 +30,7 @@ public class CartaRepository{
     }
     public CartaEntity save (CartaEntity carta){
         String sql = """
-                INSERT INTO carta (
+                INSERT INTO CARTA (
                     posicion_deseada,
                     precio,
                     stock,
@@ -67,7 +67,7 @@ public class CartaRepository{
     }
 
     public boolean delete(int id){
-        String sql = "DELETE FROM carta WHERE id_carta = :id_carta";
+        String sql = "DELETE FROM CARTA WHERE id_carta = :id_carta";
         try (Connection con = sql2o.open()){
             con.createQuery(sql)
                     .addParameter("id_carta", id)
