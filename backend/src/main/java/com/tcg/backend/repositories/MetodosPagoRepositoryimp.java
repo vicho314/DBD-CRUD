@@ -1,4 +1,4 @@
 package com.tcg.backend.repositories;
 
-public interface CarritoRepository {
+public class MetodosPagoRepositoryimp {
 }
