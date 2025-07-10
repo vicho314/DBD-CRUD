@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.List;
 
 @Repository
@@ -69,7 +67,7 @@ public class BoletaProductoRepository {
         }
     }
 
-    public BoletaProductoEntity update(BoletaProductoEntity boletaProducto, BoletaProductoEntity bpNew){
+    public BoletaProductoEntity update(BoletaProductoEntity boletaProducto, int bpNew){
         String insertSql =
                 "UPDATE BOLETA_X_PRODUCTO + " +
                         "SET id_boleta = :id_boleta_new AND id_producto = :id_producto_new" +
@@ -79,28 +77,28 @@ public class BoletaProductoRepository {
             con.createQuery(insertSql,true)
                     .addParameter("id_producto", boletaProducto.getId_producto())
                     .addParameter("id_boleta", boletaProducto.getId_boleta())
-                    .addParameter("id_producto_new", bpNew.getId_producto())
-                    .addParameter("id_boleta_new", bpNew.getId_boleta())
+                    .addParameter("id_producto_new", bpNew)
+                    .addParameter("id_boleta_new", bpNew)
                     .executeUpdate();
 
             BoletaProductoEntity boletaProductoNew = con.createQuery("SELECT * FROM BOLETA_X_PRODUCTO WHERE id_producto = :id_producto AND id_boleta = :id_boleta")
-                    .addParameter("id_producto_new", bpNew.getId_producto())
-                    .addParameter("id_boleta_new", bpNew.getId_boleta())
+                    .addParameter("id_producto_new", bpNew)
+                    .addParameter("id_boleta_new", bpNew)
                     .executeAndFetchFirst(BoletaProductoEntity.class);
 
             return boletaProductoNew;
         }
     }
 
-    public boolean delete(BoletaProductoEntity boletaProducto){
+    public boolean delete(int boletaProducto){
         String insertSql =
                 "DELETE BOLETA_X_PRODUCTO + " +
                         "WHERE id_boleta = :id_boleta AND id_producto = :id_producto";
 
         try (Connection con = sql2o.open()) {
             con.createQuery(insertSql,true)
-                    .addParameter("id_producto", boletaProducto.getId_producto())
-                    .addParameter("id_boleta", boletaProducto.getId_boleta())
+                    .addParameter("id_producto", boletaProducto)
+                    .addParameter("id_boleta", boletaProducto)
                     .executeUpdate();
 
             return true;
