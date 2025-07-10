@@ -5,6 +5,7 @@ import com.tcg.backend.repositories.CartaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -33,6 +34,6 @@ public class CartaService {
         return cartaRepo.findByEstado(estado);
     }
     public List<CartaEntity> getCartasByAño(LocalDate año) {
-        return cartaRepo.findByAñoo(año);
+        return cartaRepo.findByAño(año);
     }
 }
