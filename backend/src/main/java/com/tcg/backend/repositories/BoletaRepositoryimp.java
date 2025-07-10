@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public abstract class BoletaRepositoryimp implements BoletaRepository {
+public class BoletaRepositoryimp implements BoletaRepository {
 
     private Sql2o sql2o;
     @Autowired

@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public abstract class CarritoRepositoryimp implements CarritoRepository {
+public class CarritoRepositoryimp implements CarritoRepository {
 
     private Sql2o sql2o;
     @Autowired

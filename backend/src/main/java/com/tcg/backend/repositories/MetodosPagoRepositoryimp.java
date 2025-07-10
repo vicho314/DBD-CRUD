@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Repository
-public abstract class MetodosPagoRepositoryimp implements MetodosPagoRepository {
+public class MetodosPagoRepositoryimp implements MetodosPagoRepository {
 
     private Sql2o sql2o;
     @Autowired
@@ -19,7 +19,7 @@ public abstract class MetodosPagoRepositoryimp implements MetodosPagoRepository 
 
     //CREATE
     @Override
-    public MetodosPagoEntity Create(MetodosPagoEntity metodospago) {
+    public MetodosPagoEntity create(MetodosPagoEntity metodospago) {
         String sql = "INSERT INTO METODOSPAGO(id_metodo_de_pago, tipo_de_pago, Sbanco, nombre_titular,numero_tarjeta, fecha_vencimiento,codigo_seguridad, rut_titular)" +
                 "VALUES(:id_metodo_de_pago, :tipo_de_pago, :banco, :String nombre_titular, :numero_tarjeta, :fecha_vencimiento, :codigo_seguridad, :rut_titular)";
         try (Connection con = sql2o.open()){

@@ -3,9 +3,11 @@ package com.tcg.backend.services;
 import com.tcg.backend.entities.BoletaProductoEntity;
 import com.tcg.backend.repositories.BoletaProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BoletaProductoService {
 
     @Autowired

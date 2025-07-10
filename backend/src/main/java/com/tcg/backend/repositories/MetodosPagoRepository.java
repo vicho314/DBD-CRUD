@@ -11,7 +11,7 @@ public interface MetodosPagoRepository {
 
 
     //CREATE
-    MetodosPagoEntity Create(MetodosPagoEntity metodospago);
+    //MetodosPagoEntity Create(MetodosPagoEntity metodospago);
 
     //READ
     List<MetodosPagoEntity>  findAll();
