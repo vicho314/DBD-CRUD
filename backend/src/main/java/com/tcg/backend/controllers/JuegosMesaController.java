@@ -43,4 +43,9 @@ public class JuegosMesaController {
     public boolean delete(@RequestBody JuegosMesaEntity juego){
         return juegoService.delete(juego);
     }
+    //categorizar por tipo
+    @GetMapping("/tipo/{tipo}")
+    public List<JuegosMesaEntity> get JuegosMesaByTipo(@PathVariable String tipo){
+        return juegoService.getJuegosMesaByTipo(tipo);
+    }
 }

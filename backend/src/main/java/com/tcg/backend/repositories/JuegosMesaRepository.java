@@ -98,4 +98,13 @@ public class JuegosMesaRepository {
             return false;
         }
     }
+    //categorizacion por tipo
+    public List<JuegosMesaEntity> findByTipo(String tipo){
+        String sql = "SELECT * FROM JUEGO WHERE tipo = :tipo";
+        try (Connection con = sql2o.open()){
+            return con.createQuery(sql)
+                    .addParameter("tipo", tipo)
+                    .executeAndFetch(JuegosMesaEntity.class);
+        }
+    }
 }

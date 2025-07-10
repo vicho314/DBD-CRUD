@@ -27,4 +27,8 @@ public class JuegosMesaService {
     public boolean delete(JuegosMesaEntity juego){
         return juegoRepo.delete(juego);
     }
+    //categorizar por tipo
+    public List<JuegosMesaEntity> getJuegosMesaByTipo(String tipo) {
+        return juegoRepo.findByTipo(tipo);
+    }
 }
