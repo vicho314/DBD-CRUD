@@ -27,4 +27,7 @@ public class UsuarioService {
     public boolean delete(int id_usuario){
         return usuarioRepo.DeleteUSER(id_usuario);
     }
+    public UsuarioEntity login(UsuarioEntity usuario){
+        return usuarioRepo.login(usuario);
+    }
 }

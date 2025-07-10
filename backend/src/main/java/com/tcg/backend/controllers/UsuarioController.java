@@ -43,4 +43,10 @@ public class UsuarioController {
     public boolean delete(@PathVariable int id){
         return usuarioService.delete(id);
     }
+
+    @PostMapping("/login")
+    public UsuarioEntity login(@RequestBody UsuarioEntity usuario){
+        UsuarioEntity usuarioNew = usuarioService.login(usuario);
+        return usuario;
+    }
 }

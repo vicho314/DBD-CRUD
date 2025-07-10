@@ -108,4 +108,21 @@ public class UsuarioRepositoryImp implements UsuarioRepository {
             return false;
         }
     }
+
+    // LOGIN
+
+    public UsuarioEntity login(UsuarioEntity usuario) {
+        String sql = "SELECT * FROM USUARIO " +
+                "WHERE correo_usuario = :correo_usuario AND contraseña = :contraseña";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("correo_usuario",usuario.getCorreo_usuario())
+                    .addParameter("contraseña", usuario.getContraseña())
+                    .executeAndFetchFirst(UsuarioEntity.class);
+        }
+        catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
 }
