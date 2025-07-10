@@ -45,7 +45,7 @@ public class JuegosMesaController {
     }
     //categorizar por tipo
     @GetMapping("/tipo/{tipo}")
-    public List<JuegosMesaEntity> get JuegosMesaByTipo(@PathVariable String tipo){
+    public List<JuegosMesaEntity> getJuegosMesaByTipo(@PathVariable String tipo){
         return juegoService.getJuegosMesaByTipo(tipo);
     }
 }
