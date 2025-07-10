@@ -32,4 +32,16 @@ public class CartaController {
     public boolean delete(@PathVariable int id) {
         return cartaService.delete(id);
     }
+    @GetMapping("/rareza/{rareza}")
+    public List<CartaEntity> getCartasByRareza(@PathVariable String rareza) {
+        return cartaService.getCartasByRareza(rareza);
+    }
+    @GetMapping("/estado/{estado}")
+    public List<CartaEntity> getCartasByEstado(@PathVariable String estado) {
+        return cartaService.getCartasByEstado(estado);
+    }
+    @GetMapping("/año/{año}")
+    public List<CartaEntity> getCartasByAño(@PathVariable LocalDate año) {
+        return cartaService.getCartasByAño(año);
+    }
 }

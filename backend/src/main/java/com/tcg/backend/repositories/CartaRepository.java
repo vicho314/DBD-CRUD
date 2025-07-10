@@ -77,4 +77,32 @@ public class CartaRepository{
             return false;
         }
     }
+    //Categorizacion
+    //Cartas por rareza
+    public List<CartaEntity> findByRareza(String rareza) {
+        String sql = "SELECT * FROM CARTA WHERE rareza = :rareza";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("rareza", rareza)
+                    .executeAndFetch(CartaEntity.class);
+        }
+    }
+    //Cartas por estado
+    public List<CartaEntity> findByEstado(String estado) {
+        String sql = "SELECT * FROM CARTA WHERE estado = :estado";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("estado", estado)
+                    .executeAndFetch(CartaEntity.class);
+        }
+    }
+    //Cartas por año
+    public List<CartaEntity> findByAño(LocalDate año) {
+        String sql = "SELECT * FROM CARTA WHERE año = :año";
+        try (Connection con = sql2o.open()) {
+            return con.createQuery(sql)
+                    .addParameter("año", año)
+                    .executeAndFetch(CartaEntity.class);
+        }
+    }
 }

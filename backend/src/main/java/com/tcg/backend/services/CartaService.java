@@ -25,4 +25,14 @@ public class CartaService {
     public boolean delete(int id) {
         return cartaRepo.delete(id);
     }
+    //Categorizacion
+    public List<CartaEntity> getCartasByRareza(String rareza) {
+        return cartaRepo.findByRareza(rareza);
+    }
+    public List<CartaEntity> getCartasByEstado(String estado) {
+        return cartaRepo.findByEstado(estado);
+    }
+    public List<CartaEntity> getCartasByAño(LocalDate año) {
+        return cartaRepo.findByAñoo(año);
+    }
 }
